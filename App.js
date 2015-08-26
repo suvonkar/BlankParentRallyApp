@@ -21,10 +21,11 @@ Ext.define('CustomApp', {
 	 var myStore = Ext.create("Rally.data.wsapi.Store", {
             model: 'Project',
             autoLoad: true,
+            compact: false,
             listeners: {
                 load: function(myStore, myData, success) {
                     //console.log("my store is ", myStore);
-                    //console.log("my data is ", myData);
+                    console.log("my data is ", myData);
                     this._createCustomStore(myData);
                 },
                 scope: this
@@ -40,6 +41,7 @@ Ext.define('CustomApp', {
           if(data.data.Parent !== null && data.data.Parent !== ""){
               //console.log('Parent Found for Project : ' + data.data.Name);
           }else{
+              console.log('Parent NOT Found for Project : ' + data.data.Name);
               noParentDataArr.push(data);
           }
         });
